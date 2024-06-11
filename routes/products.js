@@ -17,6 +17,18 @@ router.get('/',  async (req, res) => {
     }
 });
 
+
+// Get product by id 
+
+router.get('/:id',async(req,res)=>{
+    try {
+        const products = await Product.findById(req.params.id);
+        res.json(products);
+    } catch (error) {
+     res.status(500).json({message:err.message});   
+    }
+})
+
 // POST a new product
 router.post('/',  async (req, res) => {
     const product = new Product({

@@ -25,9 +25,16 @@ mongoose.connect(process.env.MONGO_DB)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+
+
+
+
     app.use('/api/users', userRoutes);
     app.use('/api/products', productRoutes);
     app.use('/api/category',categoryRoute);
 
+
+
+    
     const port = process.env.PORT ;
 app.listen(port, () => console.log(`Server running on port ${port}`));
