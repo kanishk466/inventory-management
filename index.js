@@ -2,11 +2,16 @@ import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
 import bodyParser from "body-parser"
+
+import dotenv from "dotenv"
 const app = express();
 
 import userRoutes  from'./routes/users.js';
 
 import productRoutes from'./routes/products.js';
+
+
+dotenv.config()
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -14,7 +19,7 @@ app.use(bodyParser.json());
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://kanishksingh:Password%40123@cluster0.baolmn1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_DB)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
