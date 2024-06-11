@@ -10,6 +10,8 @@ import userRoutes  from'./routes/users.js';
 
 import productRoutes from'./routes/products.js';
 
+import categoryRoute from "./routes/category.js"
+
 
 dotenv.config()
 
@@ -25,6 +27,7 @@ mongoose.connect(process.env.MONGO_DB)
 
     app.use('/api/users', userRoutes);
     app.use('/api/products', productRoutes);
+    app.use('/api/category',categoryRoute);
 
     const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));

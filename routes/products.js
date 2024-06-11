@@ -51,7 +51,7 @@ router.put('/:id',async(req,res)=>{
         product.cost =req.body.cost || product.cost
         product.quantity =req.body.quantity || product.quantity
         product.brand_name =req.body.brand_name || product.brand_name
-
+        product.category_name = req.body.category_name || product.category_name
 
 
         const updatedProduct = await product.save();
