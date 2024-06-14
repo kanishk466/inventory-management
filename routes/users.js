@@ -15,7 +15,7 @@ import jwt  from "jsonwebtoken"
 
 // Register
 router.post('/register', async (req, res) => {
-    // const { user_name, password, role } = req.body;
+    // const { username, password, role } = req.body;
     const user = new User({ ...req.body});
     try {
         await user.save();
@@ -27,8 +27,8 @@ router.post('/register', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-    const { user_name, password } = req.body;
-    const user = await User.findOne({ user_name });
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
     if (!user) return res.status(400).send('Invalid username or password');
 
     const validPassword = await bcrypt.compare(password, user.password);
